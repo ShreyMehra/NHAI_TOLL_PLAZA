@@ -3,6 +3,7 @@ import functions as f
 import pandas as pd
 import plotly.express as px
 from streamlit_option_menu import option_menu 
+import time
 
 mod = {'BOT' : 'Business, Operate, Transfer', 'BOT (Toll)' : 'Business, Operate, Transfer', 'OMT' : 'Operate, Maintain and Transfer'}
 
@@ -10,14 +11,21 @@ st.set_page_config(initial_sidebar_state='collapsed', layout = 'centered')
 st.title('NHAI TOLL PLAZA')
 st.markdown('_SHREY MEHRA(LCO20376)_-Also, This is all ethical I am doing, just for educational purposes, _*just to clarify*_')
 
+with st.spinner('Loading...'):
+    time.sleep(2)
+    
 selected = option_menu(
     menu_title = None,
     options = ['Find based of National Highway','Find based of State'] 
 )
 
+with st.spinner('Loading...'):
+    time.sleep(2)
+
 if selected == 'Find based of State':
+    
     states = f.fetch_states()
-    selected_state = st.selectbox('Select a State', states)
+    selected_state = st.selectbox('Select State', states)
 
     plazas = f.fetch_plazas(selected_state)
     selected_plaza = st.selectbox('Select Toll Plaza', plazas)
@@ -59,8 +67,9 @@ if selected == 'Find based of State':
         st.plotly_chart(fig)
     
 if selected == 'Find based of National Highway':
+    
     highways = f.fetch_highway_wise()
-    selected_highway = st.selectbox('Select a Highway', highways)
+    selected_highway = st.selectbox('Select State', highways)
 
     state_list = f.fetch_highway_state(selected_highway)
     temp_lat, temp_long, hover_whole, id_whole = [], [], [], []
@@ -84,7 +93,7 @@ if selected == 'Find based of National Highway':
 
             for i in range(len(length)):
                 st.write(f'Plaza Name : {plaza_name[i]}, Plaza ID : {id[i]}')
-                st.write(f'Length of Stretch : {length[i]} kms')
+                st.write(f'Length of Stretch : {length[i]}')
                 st.write(f'Model : {model[i]}')
                 st.write(f'Latitude : {latitude[i]}, Longitude : {longitude[i]}')
                 if len(details[i]) > 2:
