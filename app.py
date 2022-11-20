@@ -17,7 +17,7 @@ selected = option_menu(
 
 if selected == 'Find based of State':
     states = f.fetch_states()
-    selected_state = st.selectbox('Select State', states)
+    selected_state = st.selectbox('Select a State', states)
 
     plazas = f.fetch_plazas(selected_state)
     selected_plaza = st.selectbox('Select Toll Plaza', plazas)
