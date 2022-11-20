@@ -84,7 +84,7 @@ if selected == 'Find based of National Highway':
 
             for i in range(len(length)):
                 st.write(f'Plaza Name : {plaza_name[i]}, Plaza ID : {id[i]}')
-                st.write(f'Length of Stretch : {length[i]}')
+                st.write(f'Length of Stretch : {length[i]} kms')
                 st.write(f'Model : {model[i]}')
                 st.write(f'Latitude : {latitude[i]}, Longitude : {longitude[i]}')
                 if len(details[i]) > 2:
