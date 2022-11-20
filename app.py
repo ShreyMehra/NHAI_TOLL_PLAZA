@@ -60,7 +60,7 @@ if selected == 'Find based of State':
     
 if selected == 'Find based of National Highway':
     highways = f.fetch_highway_wise()
-    selected_highway = st.selectbox('Select State', highways)
+    selected_highway = st.selectbox('Select a Highway', highways)
 
     state_list = f.fetch_highway_state(selected_highway)
     temp_lat, temp_long, hover_whole, id_whole = [], [], [], []
